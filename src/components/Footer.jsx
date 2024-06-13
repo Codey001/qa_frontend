@@ -25,7 +25,6 @@ const Footer = () => {
   };
 
   const handleKeyPress = (e) => {
-    console.log("key down called")
     if (e.key === "Enter") {
       handleSearch();
     }

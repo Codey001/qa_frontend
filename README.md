@@ -1,8 +1,68 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# PDF Ques & Ans
 
-Currently, two official plugins are available:
+This is a project build in order to ease the hassle of the students, teacher and researchers who find it difficult to exactly pin point the specific aritcle, page or line where specific data is located.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project helps the users to upload the PDF file and then ask question related to that pdf and all the answers will be in context to the uploaded document.
+
+
+
+
+## API Reference
+
+All the data is fetched from https://pdf-qa-backend.onrender.com/ endpoint.
+
+#### Upload the document
+
+```http
+  POST /uploadfile/
+```
+
+| Parameter | Requested body     | Description                |    
+| :-------- | :------- | :------------------------- |
+| `No parameters` | `string(binary)` | **Required**. PDF file |
+
+### Response
+{
+    "status_code" : "your_status_code",
+    "filename" : "your_file_name"
+}
+
+
+#### Get the answer
+
+```http
+  GET /ask/
+```
+
+| Parameter | Requested body     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `No parameters`      | `{"filename" : "string", "question" : "string"}` | **Required**. Name of the file and question you want to ask |
+
+### Response
+{
+    "answer" : "answer_to_your_question"
+}
+
+
+## Demo
+
+Project is live at https://qa-frontend-theta.vercel.app/
+
+
+## Documentation
+
+[Documentation](https://linktodocumentation)
+
+
+## Installation
+
+Install project with npm
+
+```bash
+  cd project
+  npm install 
+  
+  npm run dev
+```
+    

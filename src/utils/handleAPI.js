@@ -13,7 +13,6 @@ const uploadFile = async (formData) => {
 
     return res;
   } catch (err) {
-    console.error("Error uploading file:", err);
     toast.error("Upload failed");
     return err;
   }
@@ -21,7 +20,6 @@ const uploadFile = async (formData) => {
 
 const askQuestion = async (query, fileName) => {
   try {
-    console.log("QUESTION : ", query);
     const res = await axios.post(
       `${baseURL}/ask/`,
       {
@@ -34,10 +32,8 @@ const askQuestion = async (query, fileName) => {
         },
       }
     );
-    console.log(res);
     return res;
   } catch (err) {
-    console.error("Error asking question:", err);
     toast.error("Internal Server error");
   }
 };
