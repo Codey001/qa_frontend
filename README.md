@@ -53,11 +53,6 @@ Project is live at https://qa-frontend-theta.vercel.app/
 
 
 
-## Documentation
-
-[Documentation](https://linktodocumentation)
-
-
 ## Installation
 
 Install project with npm
