@@ -37,7 +37,7 @@ const Body = () => {
           <ul key={index} className="">
             {index % 2 == 0 ? (
               <div className="flex justify-end m-3 max-w-xl ml-auto">
-                <div className="bg-green-100 p-4 rounded-lg">
+                <div className="bg-green-100 p-4 rounded-lg text-black">
                   <h2>{chat}</h2>
                 </div>
                 <img src={user_img} alt="" className="w-8 h-8" />
