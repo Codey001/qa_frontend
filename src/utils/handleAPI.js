@@ -21,6 +21,7 @@ const uploadFile = async (formData) => {
 
 const askQuestion = async (query, fileName) => {
   try {
+    console.log("QUESTION : ", query);
     const res = await axios.post(
       `${baseURL}/ask/`,
       {

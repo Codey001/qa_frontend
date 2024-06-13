@@ -1,16 +1,11 @@
 import { useState } from "react";
 import logo from "../assets/image.png";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { toast } from "react-toastify";
 import { fileStatusUpdate, setLoading } from "../store/dataSlice";
 import { uploadFile } from "../utils/handleAPI";
 
-
-
 const Header = () => {
-  const [file, setFile] = useState(null);
-
   const [file_name, setFile_name] = useState(null);
 
   const dispatch = useDispatch();
@@ -25,14 +20,11 @@ const Header = () => {
       formData.append("file", selectedFile);
 
       const res = await uploadFile(formData);
-      console.log(res);
       if (res.status == 200) {
-        setFile(selectedFile);
-        console.log("File uploaded");
         toast.success("File uploaded");
         setFile_name(selectedFile.name);
+        // dispatch to store
         dispatch(setLoading(false));
-        console.log(res);
         dispatch(fileStatusUpdate({ fileName: res.data.filename }));
       } else {
         toast.error("Internal Server error");
