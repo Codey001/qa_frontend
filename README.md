@@ -49,10 +49,8 @@ All the data is fetched from https://pdf-qa-backend.onrender.com/ endpoint.
 
 Project is live at https://qa-frontend-theta.vercel.app/
 
+![Screenshot 2024-06-13 213437](https://github.com/Codey001/qa_frontend/assets/97532891/41a24eef-deda-40e1-9f8b-9fd6acea14f4)
 
-## Documentation
-
-[Documentation](https://linktodocumentation)
 
 
 ## Installation
