@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -7,6 +7,7 @@ import {
   addAnswer,
   addQuestion,
   removeQuestion,
+  clearConverstion,
 } from "../store/dataSlice";
 import { askQuestion } from "../utils/handleAPI";
 import icon from "../assets/icons.png";
@@ -15,10 +16,11 @@ import Spinner from "./Spinner";
 const Footer = () => {
   const [query, setQuery] = useState("");
 
-  const fileAvailable = useSelector((state) => state.fileStatus);
-  const fileName = useSelector((state) => state.fileName);
+  const fileAvailable = useSelector((state) => state.data.fileStatus);
+  const fileName = useSelector((state) => state.data.fileName);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+
 
   const handleInputChange = (event) => {
     setQuery(event.target.value);
@@ -32,12 +34,14 @@ const Footer = () => {
 
   const handleSearch = async () => {
     //send question to store
-    dispatch(addQuestion({ question: query }));
-
+    
     if (!fileAvailable) {
       toast.error("Upload file");
+      setQuery("");
+      return;
     } else {
       setLoading(true);
+      dispatch(addQuestion({ question: query }));
       if (query) {
         const res = await askQuestion(query, fileName);
         const answer = res.data.answer;

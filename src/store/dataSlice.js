@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   loading: false,
   fileStatus: false,
-  fileName: null,
+  fileName: null, //server
+  fileNameUser: null, //user
   messages: [],
 };
 
@@ -12,8 +13,11 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     fileStatusUpdate: (state, action) => {
+      console.log("STORE PAYLOAD : ",action.payload);
       state.fileStatus = true;
       state.fileName = action.payload.fileName;
+      state.fileNameUser = action.payload.fileNameUser;
+      state.messages = [];
     },
     setLoading: (state, action) => {
       state.loading = action.payload;
@@ -26,9 +30,10 @@ const dataSlice = createSlice({
     },
     removeQuestion: (state, action) => {
       state.messages.pop();
-    },
+    }
   },
 });
+
 
 export const {
   fileStatusUpdate,
@@ -36,5 +41,7 @@ export const {
   addQuestion,
   addAnswer,
   removeQuestion,
+  clearConverstion
 } = dataSlice.actions;
+
 export default dataSlice.reducer;

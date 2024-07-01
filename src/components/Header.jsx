@@ -1,6 +1,6 @@
 import { useState } from "react";
 import logo from "../assets/image.png";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { toast } from "react-toastify";
 import { fileStatusUpdate, setLoading } from "../store/dataSlice";
 import { uploadFile } from "../utils/handleAPI";
@@ -25,13 +25,20 @@ const Header = () => {
         setFile_name(selectedFile.name);
         // dispatch to store
         dispatch(setLoading(false));
-        dispatch(fileStatusUpdate({ fileName: res.data.filename }));
+        dispatch(fileStatusUpdate({ fileName: res.data.filename, fileNameUser: selectedFile.name }));
       } else {
         toast.error("Internal Server error");
         dispatch(setLoading(false));
       }
     }
   };
+
+  const fileNameUser = useSelector((state)=>state.data.fileNameUser)
+  useState(()=>{
+    if(fileNameUser){
+      setFile_name(fileNameUser);
+    }
+  },[])
 
   return (
     <div className="flex justify-between items-end p-4 shadow-sm">

@@ -38,4 +38,14 @@ const askQuestion = async (query, fileName) => {
   }
 };
 
-export { uploadFile, askQuestion };
+const pingServer = async () => {
+  try {
+    const res = await axios.get(`${baseURL}`)
+    return res;
+  } catch (error) {
+    toast.error("Error connecting server");
+    console.log(error);
+  }
+}
+
+export { uploadFile, askQuestion, pingServer };

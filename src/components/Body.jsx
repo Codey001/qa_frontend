@@ -6,10 +6,10 @@ import user_img from "../assets/user.png";
 import ai_logo from "../assets/ai_logo.png";
 
 const Body = () => {
-  const flag = useSelector((state) => state.fileStatus);
-  const chats = useSelector((state) => state.messages);
+  const flag = useSelector((state) => state.data.fileStatus);
+  const chats = useSelector((state) => state.data.messages);
   const endOfMessagesRef = useRef(null);
-  const loading = useSelector((state) => state.loading);
+  const loading = useSelector((state) => state.data.loading);
 
   // Function to scroll to the bottom
   const scrollToBottom = () => {
@@ -24,7 +24,7 @@ const Body = () => {
   return (
     <div className="md:m-4 md:px-24 px-2">
     
-      {chats.length === 0 && !loading ? (
+      {chats && chats.length == 0 && !loading ? (
         flag ? (
           <h1>Enter your question</h1>
         ) : (
@@ -33,7 +33,7 @@ const Body = () => {
       ) : loading ? (
         <Spinner input_data="Processing file..." />   
       ) : (
-        chats.map((chat, index) => (
+        chats && chats.map((chat, index) => (
           <ul key={index} className="">
             {index % 2 == 0 ? (
               <div className="flex justify-end m-3 max-w-xl ml-auto">
