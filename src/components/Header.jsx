@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../assets/image.png";
+import logo from "../assets/titleIcon.png";
 import { useDispatch, useSelector} from "react-redux";
 import { toast } from "react-toastify";
 import { fileStatusUpdate, setLoading } from "../store/dataSlice";
@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <div className="flex justify-between items-end p-4 shadow-sm">
-      <img src={logo} alt="logo" className="w-24" />
+      <img src={logo} alt="logo" className="w-28" />
 
       <div className="flex items-center">
         {file_name && <span className="mr-2 text-green-500">{file_name}</span>}
