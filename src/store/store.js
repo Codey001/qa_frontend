@@ -12,10 +12,10 @@ const store = configureStore({
   preloadedState,
 });
 
-store.subscribe(() => {
-  saveState({
-    data: store.getState().data,
-  });
-});
+// store.subscribe(() => {
+//   saveState({
+//     data: store.getState().data,
+//   });
+// });
 
 export default store;
